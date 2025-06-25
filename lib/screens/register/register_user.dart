@@ -8,7 +8,7 @@ Future<Map<String, dynamic>> registerUser({
   required String phone,
   required String password,
 }) async {
-  final url = Uri.parse('http://192.168.1.162/ecobin/api/register.php');
+  final url = Uri.parse('http://192.168.0.4/ecobin/api/register.php');
 
   final headers = {'Content-Type': 'application/json'};
 
