@@ -1,5 +1,4 @@
-import 'package:ecobin/screens/home/home.dart';
-import 'package:ecobin/screens/home/home_content.dart';
+import 'package:ecobin/screens/complete_setup/choose_user_type_screen.dart';
 import 'package:ecobin/shared/button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -51,11 +50,12 @@ class _UploadPhotoState extends State<UploadPhoto> {
                     style: TextStyle(color: Colors.green),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        Navigator.push(
+                        Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (ctx) => Home(widget.username),
+                            builder: (ctx) => ChooseUserTypeScreen(),
                           ),
+                          (route) => false,
                         );
                       },
                   ),
