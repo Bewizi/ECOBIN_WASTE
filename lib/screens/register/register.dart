@@ -1,6 +1,7 @@
 import 'package:ecobin/screens/home/home.dart';
 import 'package:ecobin/screens/login/login.dart';
 import 'package:ecobin/screens/register/register_user.dart';
+import 'package:ecobin/services/api_services.dart';
 import 'package:ecobin/shared/button.dart';
 import 'package:ecobin/shared/modal.dart';
 import 'package:ecobin/shared/text_form.dart';
@@ -19,6 +20,8 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
+
+  final apiServices = ApiService();
 
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -168,7 +171,7 @@ class _RegisterState extends State<Register> {
                           _formKey.currentState!.save();
 
                           try {
-                            final result = await registerUser(
+                            final result = await apiServices.register(
                               name: _nameController.text.trim(),
                               email: _emailController.text.trim(),
                               phone: _phoneController.text.trim(),
@@ -185,7 +188,10 @@ class _RegisterState extends State<Register> {
                               _passwordController.clear();
                               _phoneController.clear();
 
-                              ShowModal.showModal(context);
+                              ShowModal.showModal(
+                                context,
+                                name: result['user']['name'],
+                              );
 
                               // await Future.delayed(Duration(seconds: 1000));
                               //
