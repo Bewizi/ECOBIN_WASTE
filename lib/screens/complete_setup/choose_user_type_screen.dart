@@ -2,13 +2,24 @@ import 'package:ecobin/screens/complete_setup/user_type_options.dart';
 import 'package:flutter/material.dart';
 
 class ChooseUserTypeScreen extends StatefulWidget {
-  const ChooseUserTypeScreen({super.key});
+  const ChooseUserTypeScreen({super.key, required this.name});
+
+  final String name;
 
   @override
   State<ChooseUserTypeScreen> createState() => _ChooseUserTypeScreenState();
 }
 
 class _ChooseUserTypeScreenState extends State<ChooseUserTypeScreen> {
+  late final String name;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    name = widget.name;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +52,7 @@ class _ChooseUserTypeScreenState extends State<ChooseUserTypeScreen> {
               ],
             ),
             SizedBox(height: 20),
-            UserTypeOptions(),
+            UserTypeOptions(name: name),
           ],
         ),
       ),
