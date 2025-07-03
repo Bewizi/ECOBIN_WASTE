@@ -1,6 +1,7 @@
 import 'package:ecobin/screens/home/home.dart';
 import 'package:ecobin/screens/login/login_user.dart';
 import 'package:ecobin/screens/register/register.dart';
+import 'package:ecobin/services/api_services.dart';
 import 'package:ecobin/shared/button.dart';
 import 'package:ecobin/shared/text_form.dart';
 import 'package:flutter/gestures.dart';
@@ -15,6 +16,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+
+  final apiService = ApiService();
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -106,7 +109,7 @@ class _LoginState extends State<Login> {
                       isPassword: true,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your phone number';
+                          return 'Please enter your password';
                         }
                         if (value.length < 6) {
                           return 'Password must be at least 6 characters above';
@@ -145,12 +148,12 @@ class _LoginState extends State<Login> {
 
                           await Future.delayed(Duration(seconds: 2));
 
-                          final result = await loginUser(
+                          final result = await apiService.login(
                             email: _emailController.text.trim(),
                             password: _passwordController.text.trim(),
                           );
 
-                          if (result['success'] = true) {
+                          if (result['success'] == true) {
                             print('Login Successful, navigating ');
 
                             _formKey.currentState!.reset();
@@ -161,7 +164,8 @@ class _LoginState extends State<Login> {
                             Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                builder: (ctx) => Home(result['user']['name']),
+                                builder: (ctx) =>
+                                    Home(username: result['user']['name']),
                               ),
                               (route) => false,
                             );

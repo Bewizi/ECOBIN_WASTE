@@ -2,12 +2,12 @@ import 'package:ecobin/shared/navbar.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  const Home(this.name, {super.key});
+  const Home({super.key, required this.username});
 
-  final String name;
+  final String username;
 
   @override
   Widget build(BuildContext context) {
-    return Navbar(username: name);
+    return Navbar(username: username);
   }
 }

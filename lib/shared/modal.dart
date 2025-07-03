@@ -10,7 +10,7 @@ class ShowModal {
   // final String result;
 
   // modal
-  static void showModal(BuildContext context, {String? name}) {
+  static void showModal(BuildContext context, {required String name}) {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
@@ -57,7 +57,7 @@ class ShowModal {
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (ctx) => Home(name ?? '')),
+                      MaterialPageRoute(builder: (ctx) => Home(username: name)),
                       (route) => false,
                     );
                   },

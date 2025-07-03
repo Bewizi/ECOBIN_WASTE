@@ -1,9 +1,11 @@
-import 'package:ecobin/screens/home/home.dart';
+import 'package:ecobin/screens/complete_setup/pickup_location_screen.dart';
 import 'package:ecobin/shared/button.dart';
 import 'package:flutter/material.dart';
 
 class UserTypeOptions extends StatefulWidget {
-  const UserTypeOptions({super.key});
+  const UserTypeOptions({super.key, required this.name});
+
+  final String name;
 
   @override
   State<UserTypeOptions> createState() => _UserTypeOptionsState();
@@ -16,6 +18,15 @@ class _UserTypeOptionsState extends State<UserTypeOptions> {
     setState(() {
       selectedOption = option;
     });
+  }
+
+  late final String name;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    name = widget.name;
   }
 
   @override
@@ -86,7 +97,9 @@ class _UserTypeOptionsState extends State<UserTypeOptions> {
               ? () {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (ctx) => Home('')),
+                    MaterialPageRoute(
+                      builder: (ctx) => PickupLocationScreen(name: name),
+                    ),
                     (route) => false,
                   );
                 }

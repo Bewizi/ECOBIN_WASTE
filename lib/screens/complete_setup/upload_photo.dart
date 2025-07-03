@@ -53,7 +53,8 @@ class _UploadPhotoState extends State<UploadPhoto> {
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (ctx) => ChooseUserTypeScreen(),
+                            builder: (ctx) =>
+                                ChooseUserTypeScreen(name: widget.username),
                           ),
                           (route) => false,
                         );
