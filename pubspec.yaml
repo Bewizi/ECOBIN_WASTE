@@ -35,6 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   http: ^1.4.0
+  horizontal_week_calendar: ^0.0.20
+  font_awesome_flutter: ^10.8.0
+  lucide_icons_flutter: ^3.0.6
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +64,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/recycle_symbol.png
+    - assets/images/household_waste.png
+    - assets/images/recyclables_waste.png
+    - assets/images/organic_waste.png
+    - assets/images/electronic_waste.png
+    - assets/images/medical_waste.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
