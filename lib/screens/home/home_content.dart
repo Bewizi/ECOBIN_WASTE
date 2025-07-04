@@ -1,3 +1,5 @@
+import 'package:ecobin/component/next_pick_date.dart';
+import 'package:ecobin/component/pickup_actions_panel.dart';
 import 'package:flutter/material.dart';
 
 class HomeContent extends StatefulWidget {
@@ -34,47 +36,55 @@ class _HomeContentState extends State<HomeContent> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Stack(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 50),
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '$greeting ${capitalizeName(widget.username)}',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 50),
+                // padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '$greeting ${capitalizeName(widget.username)}',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
 
-                      SizedBox(height: 5),
+                        SizedBox(height: 5),
 
-                      Text(
-                        'it\'s sunny 🌞, perfect day to take\n out your bin,',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                        Text(
+                          'it\'s sunny 🌞, perfect day to take\n out your bin,',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Icon(Icons.notifications, color: Colors.black),
-                ],
+                      ],
+                    ),
+                    Icon(Icons.person, size: 50, color: Colors.black),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+          NextPickDate(),
+
+          SizedBox(height: 20),
+
+          PickupActionsPanel(),
+        ],
+      ),
     );
   }
 }
