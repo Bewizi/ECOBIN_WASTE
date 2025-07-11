@@ -83,6 +83,7 @@ class ShowModal {
     );
   }
 
+  // Pickup bottom sheet modal
   static void pickUpDetailsModal(BuildContext context, {required String name}) {
     showModalBottomSheet<void>(
       context: context,
