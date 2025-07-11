@@ -1,3 +1,4 @@
+import 'package:ecobin/screens/pickup_details/pickup_details_details.dart';
 import 'package:ecobin/shared/button.dart';
 import 'package:ecobin/shared/text_format.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +107,19 @@ class _ChoosenWasteTypeState extends State<ChoosenWasteType> {
 
             SizedBox(height: 120),
 
-            CompleteButton('Next', onPressed: () {}),
+            CompleteButton(
+              'Next',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return PickupDetailsDetails();
+                    },
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

@@ -1,11 +1,8 @@
-import 'package:ecobin/screens/home/home.dart';
-import 'package:ecobin/screens/login/login.dart';
-import 'package:ecobin/screens/register/register.dart';
 import 'package:ecobin/shared/navbar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MaterialApp(home: Register()));
+  runApp(const MaterialApp(home: Navbar(username: '')));
 }
 
 class EcoBinApp extends StatefulWidget {
