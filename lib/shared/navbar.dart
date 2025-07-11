@@ -1,5 +1,7 @@
 import 'package:ecobin/screens/activity/activity.dart';
 import 'package:ecobin/screens/home/home_content.dart';
+import 'package:ecobin/screens/profile/profile.dart';
+import 'package:ecobin/screens/waste_type/waste_type.dart';
 import 'package:flutter/material.dart';
 
 class Navbar extends StatefulWidget {
@@ -19,7 +21,12 @@ class _NavbarState extends State<Navbar> {
   @override
   void initState() {
     super.initState();
-    screens = [HomeContent(username: widget.username), Activity()];
+    screens = [
+      HomeContent(username: widget.username),
+      Activity(),
+      WasteType(),
+      UserProfile(),
+    ];
   }
 
   void onTabTapped(int index) {
