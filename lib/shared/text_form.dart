@@ -11,10 +11,10 @@ class TextForm extends StatefulWidget {
     this.onSaved,
   });
 
-  final String text;
+  final String? text;
   final String? Function(String?)? validator;
   final bool isPassword;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   final TextEditingController? controller;
   final void Function(String?)? onSaved;
 
@@ -33,6 +33,8 @@ class _TextFormState extends State<TextForm> {
 
   @override
   Widget build(BuildContext context) {
+    final labelText = widget.text ?? "Field";
+
     return TextFormField(
       obscureText: widget.isPassword ? _obscureText : false,
       validator: widget.validator,
@@ -48,8 +50,8 @@ class _TextFormState extends State<TextForm> {
           borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(color: Colors.black),
         ),
-        hintText: 'Enter your  ${widget.text}',
-        label: Text(widget.text),
+        hintText: 'Enter your  $labelText',
+        label: Text(labelText),
         suffixIcon: widget.isPassword
             ? IconButton(
                 onPressed: _togglePasswordVisibility,
