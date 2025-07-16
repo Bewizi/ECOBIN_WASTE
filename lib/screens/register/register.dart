@@ -1,11 +1,8 @@
-import 'package:ecobin/screens/home/home.dart';
 import 'package:ecobin/screens/login/login.dart';
-import 'package:ecobin/screens/register/register_user.dart';
 import 'package:ecobin/services/api_services.dart';
 import 'package:ecobin/shared/button.dart';
 import 'package:ecobin/shared/modal.dart';
 import 'package:ecobin/shared/text_form.dart';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -256,6 +253,7 @@ class _RegisterState extends State<Register> {
                             ),
                           ],
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
 
