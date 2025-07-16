@@ -1,8 +1,8 @@
-import 'package:ecobin/screens/register/register.dart';
+import 'package:ecobin/screens/onboarding/onboarding_screens.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MaterialApp(home: Register()));
+  runApp(const MaterialApp(home: OnboardingScreens()));
 }
 
 class EcoBinApp extends StatefulWidget {
