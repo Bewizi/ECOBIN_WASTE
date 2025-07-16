@@ -69,6 +69,11 @@ flutter:
     - assets/images/organic_waste.png
     - assets/images/electronic_waste.png
     - assets/images/medical_waste.png
+    - assets/images/logo.png
+    - assets/images/onboarding_illustration_1.png
+    - assets/images/onboarding_illustration_2.png
+    - assets/images/onboarding_illustration_3.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
