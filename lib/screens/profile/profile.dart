@@ -1,3 +1,5 @@
+import 'package:ecobin/screens/login/login.dart';
+import 'package:ecobin/services/api_services.dart';
 import 'package:ecobin/shared/button.dart';
 import 'package:flutter/material.dart';
 
@@ -144,14 +146,45 @@ class _UserProfileState extends State<UserProfile> {
                 ],
               ),
 
+              SizedBox(height: 10),
+
+              // Logout button
+              TextButton(
+                onPressed: () async {
+                  final api = ApiService();
+
+                  final result = await api.logout();
+
+                  if (result['success']) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (ctx) => Login()),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text(result['message'])));
+                  }
+                },
+                child: Row(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Logout',
+                      style: TextStyle(color: Colors.red, fontSize: 28),
+                      textAlign: TextAlign.center,
+                    ),
+                    Icon(Icons.logout_outlined, color: Colors.red, size: 24),
+                  ],
+                ),
+              ),
+
               SizedBox(height: 100),
               //   PICK UP HISTORY BUTTON
               SkipButton('Pickup History', onPressed: () {}),
 
               SizedBox(height: 20),
-
-              //   VIEW ACTIVITY BUTTON
-              CompleteButton('View Activity', onPressed: () {}),
             ],
           ),
         ),
