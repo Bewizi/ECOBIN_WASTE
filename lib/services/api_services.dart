@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class ApiService {
   // base url
-  final baseUrl = 'http://192.168.0.4:8000/api';
+  final baseUrl = 'http://192.168.100.114:8000/api';
 
   // login server
   Future<Map<String, dynamic>> login({
@@ -13,7 +13,7 @@ class ApiService {
   }) async {
     try {
       final response = await http.post(
-        Uri.parse('$baseUrl/login'),
+        Uri.parse('$baseUrl/v1/login'),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -52,7 +52,7 @@ class ApiService {
   }) async {
     try {
       final response = await http.post(
-        Uri.parse('$baseUrl/register'),
+        Uri.parse('$baseUrl/v1/register'),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -79,6 +79,31 @@ class ApiService {
         return {
           'success': false,
           'message': data['errors']?.values.first[0] ?? 'Registration failed',
+        };
+      }
+    } catch (e) {
+      return {'success': false, 'message': 'Server error: $e'};
+    }
+  }
+
+  // logout
+  Future<Map<String, dynamic>> logout() async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/v1/logout'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+      );
+      final data = jsonDecode(response.body);
+      print('Logout Response: $data');
+      if (response.statusCode == 200) {
+        return {'success': true, 'message': data['message']};
+      } else {
+        return {
+          'success': false,
+          'message': data['message'] ?? 'Logout failed',
         };
       }
     } catch (e) {
